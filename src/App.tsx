@@ -32,6 +32,7 @@ function App() {
     fetchChekcAuth()
   }, [])
 
+  const q = 1
   return (
     <div className="dungeon-app">
       <Header setVisibleAside={setVisibleAside}/>
