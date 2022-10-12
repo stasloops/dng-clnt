@@ -127,8 +127,8 @@
     }
 
     &__history {
-        width: 10px;
-        height: 10px;
+        width: 20px;
+        height: 20px;
         margin-left: 20px;
         margin-bottom: 5px;
         border: 1px solid #424242;
@@ -138,17 +138,5 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-
-        &-button {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            font-size: 19px;
-            stroke-width: 0;
-            stroke: currentColor;
-            fill: currentColor;
-            color: #fff;
-            margin-top: 4px;
-        }
     }
 }

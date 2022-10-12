@@ -5,9 +5,11 @@ import { getCategory } from '../../../../effector/game/game'
 import { $slotStore } from '../../../../effector/slot/slot'
 import { toggleHistory, toggleRegistration } from '../../../../effector/togglePopup/togglePopup'
 import './SlotDiceGame.scss'
+import { useSvg } from '../../../../hooks/useSvg'
 
 const SlotDiceGame = () => {
   const { slotBet, range, droppedNumber } = useStore($slotStore)
+  const {svg} = useSvg()
   const [fromTo, setFromTo] = useState({ less: 0, more: 0 })
   const [coeff, setCoeff] = useState('2')
   const auth = useStore($authStore)
@@ -33,8 +35,8 @@ const SlotDiceGame = () => {
     {
       <section className="dice__game">
         <div onClick={openHistoryPopup} className='dice__history'>
-          <div>
-            <svg className='dice__history-button' viewBox="0 0 62.246 62.246"><path d="M57.548,45.107H19.965c-2.595,0-4.699,2.105-4.699,4.701c0,2.594,2.104,4.699,4.699,4.699h37.583c2.594,0,4.698-2.105,4.698-4.699C62.246,47.213,60.142,45.107,57.548,45.107z" /><path d="M57.548,26.402H19.965c-2.595,0-4.699,2.104-4.699,4.7c0,2.595,2.104,4.699,4.699,4.699h37.583c2.594,0,4.698-2.104,4.698-4.699S60.142,26.402,57.548,26.402z" /><path d="M19.965,17.096h37.583c2.594,0,4.698-2.104,4.698-4.7s-2.104-4.699-4.698-4.699H19.965c-2.595,0-4.699,2.104-4.699,4.699C15.266,14.991,17.37,17.096,19.965,17.096z" /><circle cx="4.77" cy="12.439" r="4.77" /><circle cx="4.77" cy="31.102" r="4.769" /><circle cx="4.77" cy="49.807" r="4.77" /></svg>
+          <div className='dice__history-button'>
+            {svg.history}
           </div>
         </div>
         <div className='dice__game-container'>

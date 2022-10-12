@@ -133,6 +133,12 @@
             @media screen and (max-width: 1150px) {
                 display: none;
             }
+
+            &-contact {
+                width: 1.1em;
+                height: 1.1em;
+                margin-right: 5px;
+            }
         }
 
         &-title {
@@ -187,7 +193,7 @@
             box-shadow: none;
             background: $green;
             transform: scale(0.98);
-            
+
         }
 
         @media screen and (max-width: 800px) {

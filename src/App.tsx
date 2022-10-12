@@ -20,9 +20,11 @@ import Dice from './pages/games/dice/Dice';
 import SlotDice from './pages/games/slotDice/SlotDice';
 import PlayerStatistics from './components/always/playerStatistics/PlayerStatistics';
 import Header from './components/always/header/Header';
+import Chat from './components/always/chat/Chat';
 
 function App() {
   const [visibleAside, setVisibleAside] = useState<boolean>(false)
+  const [visibleChat, setVisibleChat] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchChekcAuth = async () => {
@@ -32,14 +34,14 @@ function App() {
     fetchChekcAuth()
   }, [])
 
-  const q = 1
   return (
     <div className="dungeon-app">
-      <Header setVisibleAside={setVisibleAside}/>
+      <Header setVisibleChat={setVisibleChat} setVisibleAside={setVisibleAside}/>
       <Menu />
       <Popups />
       <MessagePanel />
       <ProfileMenu visibleAside={visibleAside} setVisibleAside={setVisibleAside} />
+      <Chat visibleChat={visibleChat} setVisibleChat={setVisibleChat} />
       <Routes>
         <Route index element={<Home />} />
         <Route path='/profile' element={<Profile />} />
