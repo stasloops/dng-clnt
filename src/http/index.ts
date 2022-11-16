@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export const API_URL = process.env.NODE_ENV !== 'production' ? 'https://dunge-server-prod.herokuapp.com/api' : 'http://localhost:7777/api' 
+export const API_URL = process.env.NODE_ENV === 'production' ? 'https://dunge-server-prod.herokuapp.com/api' : 'http://localhost:7777/api' 
 
 axios.defaults.withCredentials = true
 const $api = axios.create({
