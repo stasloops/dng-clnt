@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.scss';
 import Menu from './components/always/menu/Menu';
 import Popups from './components/popups/Popups';
-import { checkAuth } from './effector/auth';
+import { checkAuth, logout } from './effector/auth';
 import Profile from './pages/profile/Profile';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
@@ -28,20 +28,25 @@ function App() {
 
   useEffect(() => {
     const fetchChekcAuth = async () => {
-      const res = await checkAuth()
-      updateBalance(res?.data.userData?.balance)
+      try {
+        const res = await checkAuth()
+        updateBalance(res?.data.userData?.balance)
+      } catch (e) {
+        logout()
+      }
     }
     fetchChekcAuth()
   }, [])
 
   return (
     <div className="dungeon-app">
-      <Header setVisibleChat={setVisibleChat} setVisibleAside={setVisibleAside}/>
+      <Header setVisibleChat={setVisibleChat} setVisibleAside={setVisibleAside} />
       <Menu />
       <Popups />
       <MessagePanel />
       <ProfileMenu visibleAside={visibleAside} setVisibleAside={setVisibleAside} />
       <Chat visibleChat={visibleChat} setVisibleChat={setVisibleChat} />
+      {/* <ChatA visibleChat={visibleChat} setVisibleChat={setVisibleChat} /> */}
       <Routes>
         <Route index element={<Home />} />
         <Route path='/profile' element={<Profile />} />

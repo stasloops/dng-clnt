@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { useStore } from 'effector-react'
 import { $authStore } from '../../../effector/auth'
 import { useClose } from '../../../hooks/useClose'
@@ -50,7 +50,7 @@ const Chat: FC<ChatProps> = ({ visibleChat, setVisibleChat }) => {
       console.log(messages);
       
     }, [messages])
-    
+   
     return (
         <section style={{ right: visibleChat ? '0px' : '-450px' }} className='chat' ref={value}>
             <div className='chat__container'>

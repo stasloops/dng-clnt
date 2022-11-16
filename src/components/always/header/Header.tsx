@@ -29,7 +29,6 @@ const Header: FC<HeaderProps> = ({ setVisibleAside, setVisibleChat }) => {
         })
     }
 
-
     return (
         <header className='header'>
             <div className='header__inner'>

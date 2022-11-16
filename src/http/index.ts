@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-export const API_URL = process.env.NODE_ENV === 'production' ? 'https://dunge-server-prod.herokuapp.com/api' : 'http://localhost:7777/api' 
+export const API_URL = process.env.NODE_ENV !== 'production' ? 'https://dunge-server-prod.herokuapp.com/api' : 'http://localhost:7777/api' 
 
 axios.defaults.withCredentials = true
 const $api = axios.create({
@@ -30,7 +30,8 @@ $api.interceptors.response.use((config) => {
             localStorage.setItem('token', res.data.accessToken);
             return $api.request(originalRequest);
         } catch (e) {
-            console.log(e)
+            console.log(e);
+            
         }
     }
     throw error;

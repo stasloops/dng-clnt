@@ -1,34 +1,29 @@
+import { LadderStore, LadderFetch } from './ladderTypes';
 import $api, { API_URL } from '../../http/index';
 import { createEffect, createEvent, createStore } from 'effector';
 
 export const getLadderBet = createEvent<number>()
-export const getLadderCell = createEvent<number>()
 export const changeIsLoading = createEvent<boolean>()
 export const reset = createEvent()
 
-export const createGame = createEffect(async (data: any) => {
+export const createGame = createEffect(async (data: LadderFetch) => {
     const res = await $api.post(`${API_URL}/ladder/create`, data)
     return res
 })
-export const calculationGame = createEffect(async (data: any) => {
+export const calculationGame = createEffect(async (data: LadderFetch) => {
     const res = await $api.post(`${API_URL}/ladder/calculation`, data)
     return res
 })
-export const endGame = createEffect(async (data: any) => {
+export const endGame = createEffect(async (data: LadderFetch) => {
     const res = await $api.post(`${API_URL}/ladder/end`, data)
     return res
 })
-// export const checkLadderGameStatus = createEffect(async (data: any) => {
-//     const res = await $api.post(`${API_URL}/ladder/status`, data)
-//     return res
-// })
 
-export const $ladderStore = createStore<any>({
+export const $ladderStore = createStore<LadderStore>({
     gameStatus: 'start',
     ladderBet: 1,
     isFail: false,
     activeСell: [],
-    selectedCell: null,
     stone: null,
     gameId: null,
     isLoading: false,
@@ -70,12 +65,6 @@ export const $ladderStore = createStore<any>({
             isLoading: newStatus
         }
     ))
-    .on(changeIsLoading, (state, cell) => (
-        {
-            ...state,
-            selectedCell: cell
-        }
-    ))
     .on(reset, (state) => (
         {
             ...state,
@@ -83,3 +72,8 @@ export const $ladderStore = createStore<any>({
             activeСell: []
         }
     ))
+
+    $ladderStore.watch((state)=> {
+        console.log(state);
+        
+    })

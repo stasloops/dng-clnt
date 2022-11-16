@@ -8,7 +8,6 @@ type BalanceProps = {
     setVisibleAside: (state: boolean) => void
 }
 
-
 const Balance: FC<BalanceProps> = ({setVisibleAside}) => {
     const balance = useStore($balance)
     const filterBalance = Math.round(balance * 100) / 100
@@ -27,8 +26,6 @@ const Balance: FC<BalanceProps> = ({setVisibleAside}) => {
                 </span>
                 <div className='balance__score'>
                     {filterBalance}
-                    {/* / {balance} */}
-                    {/* {balance !== 0 ? balance : balance + '.00'} */}
                 </div>
                 <div className='balance__change'>
                     <div onClick={() => toggleTopUp(true)} className='balance__change-item'>

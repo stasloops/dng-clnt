@@ -1,8 +1,3 @@
-export type DataCreateGame = {
-   userId: string,
-   bet: number
-}
-
 export type CoinStore = {
     gameStatus: 'start' | 'calculation' | 'end'
     bet: number
