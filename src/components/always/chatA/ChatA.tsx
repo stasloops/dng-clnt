@@ -21,9 +21,6 @@ const ChatA: FC<ChatProps> = ({ visibleChat, setVisibleChat }) => {
     const [connected, setConnected] = useState(false);
     const [username, setUsername] = useState('')
     
-    console.log(messages);
-    console.log(socket);
-    console.log(value);
     function connect() {
         socket.current = new WebSocket('ws://localhost:5000');
 

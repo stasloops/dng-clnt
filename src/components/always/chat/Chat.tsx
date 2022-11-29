@@ -46,11 +46,6 @@ const Chat: FC<ChatProps> = ({ visibleChat, setVisibleChat }) => {
         })   
     }
 
-    useEffect(() => {
-      console.log(messages);
-      
-    }, [messages])
-   
     return (
         <section style={{ right: visibleChat ? '0px' : '-450px' }} className='chat' ref={value}>
             <div className='chat__container'>

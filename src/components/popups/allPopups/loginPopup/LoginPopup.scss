@@ -91,6 +91,10 @@
        margin-bottom: 15px;
     }
 
+    &__error {
+        color: red;
+    }
+
     &__create {
         background: $black;
         color: #fff;

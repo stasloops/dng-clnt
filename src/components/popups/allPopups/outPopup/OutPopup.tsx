@@ -57,8 +57,6 @@ const OutPopup = () => {
     }
 
     try {
-      console.log(JSON.stringify(cardNumber))
-
       const data = {
         transferId: transferId,
         requisites: cardNumber,
@@ -79,13 +77,8 @@ const OutPopup = () => {
           <span onClick={() => toggleOut(false)} className='out__close'>+</span>
         </div>
         <div className="out__bottom">
-          <div className="out__methods">
-            <div className="out__methods-item">
-              <span className='out__methods-item-title'>Банк. карта</span>
-            </div>
-          </div>
           <div className="out__form">
-            <h3 className='out__form-title'>Банк. карта</h3>
+            <h3 className='out__form-title'>На Банк. карту</h3>
             <h6 className='out__input-title'>Укажите сумму голды</h6>
             <div className='out__form-item'>
               <button onClick={minusAmount} className='out__change'>-</button>
@@ -94,7 +87,7 @@ const OutPopup = () => {
               </div>
               <button onClick={plusAmount} className='out__change'>+</button>
             </div>
-            <h6 className='out__will-be-credited'>Будет зачислено: <span className='fffclr'>{valueAmount}</span></h6>
+            <h6 className='out__will-be-credited'>Будет зачислено: <span className='fffclr'>{valueAmount} руб.</span></h6>
             <div className='out__form-item'>
               <div className='out__input-box'>
                 <input onChange={(e) => handleCardNumber(e)} value={cardNumber} placeholder="4923 5582 1302 6767" className='out__input out__input-card-number' />

@@ -15,7 +15,7 @@ const SlotDicePanel = () => {
   const [interval, setInterval] = useState<number>()
   const [completedGames, setCompletedGames] = useState<number>(0)
   const [active, setActive] = useState<boolean>(() => {
-    const resActive: any = localStorage.getItem('activeSlot')
+    const resActive = localStorage.getItem('activeSlot')
     const parseActive = JSON.parse(resActive)
     return parseActive
   })

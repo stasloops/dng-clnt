@@ -3,10 +3,6 @@ import { useStore } from 'effector-react'
 import { $messageStore, deleteError } from '../../effector/messageScreen/messageScreen'
 import './MessagePanel.scss'
 
-type Text = {
-    text: string
-}
-
 const MessagePanel = () => {
     const message = useStore($messageStore)
     const errors = message.errors
@@ -14,7 +10,7 @@ const MessagePanel = () => {
     return (
         <div className='message'>
             {
-                errors?.map((item: any, id: number) => (
+                errors?.map((item, id) => (
                     <div key={id} className='message__container'>
                         <div onClick={() => deleteError(item.text)} className='message__delete icon__delete'>
                             <span className='icon__delete-x'>

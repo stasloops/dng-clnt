@@ -12,6 +12,7 @@ type RegistrationPopupProps = {
 const RegistrationPopup: FC<RegistrationPopupProps> = ({ password }) => {
     const [email, setEmail] = useState('')
     const { value } = useClose(toggleRegistration)
+    const [error, setError] = useState<string>('')
 
 
     const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,13 +26,17 @@ const RegistrationPopup: FC<RegistrationPopupProps> = ({ password }) => {
 
     const sendForm = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        const userData = {
-            email,
-            password
+        try {
+            const userData = {
+                email,
+                password
+            }
+            const res = await registration(userData)
+            updateBalance(res.data.userData.balance)
+            toggleRegistration(false)
+        } catch (e) {
+            setError(e.response.data.message)
         }
-        const res = await registration(userData)
-        updateBalance(res.data.userData.balance)
-        toggleRegistration(false)
     }
 
     return (
@@ -46,6 +51,10 @@ const RegistrationPopup: FC<RegistrationPopupProps> = ({ password }) => {
                         <label className='registration__label'>E-mail</label>
                         <input value={email} onChange={(e) => handleEmail(e)} placeholder='E-mail' className='registration__input' />
                     </div>
+                    {
+                        error ?
+                            <p className='registration__error'>{error}</p> : null
+                    }
                     <div className='registration__item'>
                         <label className='registration__label'>Пароль</label>
                         <input value={password} className='registration__input' />

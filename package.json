@@ -7,7 +7,8 @@
     "start": "webpack serve",
     "build-dev": "webpack",
     "build-prod": "webpack --node-env=production",
-    "clear": "rd /s /q dist"
+    "clear": "rd /s /q dist",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -41,6 +42,7 @@
     "eslint": "^8.24.0",
     "eslint-plugin-react": "^7.31.8",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.4.5",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",

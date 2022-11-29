@@ -53,7 +53,7 @@ const HistoryPopup = () => {
                 </div>
                 <section className='history__games'>
                     {
-                        games?.map((item: any, id: number) => (
+                        games?.map((item, id) => (
                             <div key={id} className='history__game'>
                                 <span className='history__game-item'>
                                     {item.gameId}

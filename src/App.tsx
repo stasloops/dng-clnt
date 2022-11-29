@@ -21,6 +21,7 @@ import SlotDice from './pages/games/slotDice/SlotDice';
 import PlayerStatistics from './components/always/playerStatistics/PlayerStatistics';
 import Header from './components/always/header/Header';
 import Chat from './components/always/chat/Chat';
+import $api, { API_URL } from './http';
 
 function App() {
   const [visibleAside, setVisibleAside] = useState<boolean>(false)
@@ -37,6 +38,29 @@ function App() {
     }
     fetchChekcAuth()
   }, [])
+
+  const checkPayStatus = async () => {
+    const parse = JSON.parse(localStorage.getItem('payment'))
+    const billId = parse.billId
+    const data = {
+      billId: billId
+    }
+    const res = await $api.post(`${API_URL}/transfer/check`, data)
+    res.data.balance ? updateBalance(res.data.balance) : null
+
+    if (res.data.message === 'close') {
+      localStorage.removeItem('payment')
+    }
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (localStorage.getItem('payment')) {
+        checkPayStatus()
+      }
+    }, 2000)
+  }, [])
+
 
   return (
     <div className="dungeon-app">

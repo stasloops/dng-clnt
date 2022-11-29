@@ -72,8 +72,3 @@ export const $ladderStore = createStore<LadderStore>({
             activeСell: []
         }
     ))
-
-    $ladderStore.watch((state)=> {
-        console.log(state);
-        
-    })

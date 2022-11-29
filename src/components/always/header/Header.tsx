@@ -7,6 +7,7 @@ import LittleMenu from './components/littleMenu/LittleMenu'
 import Balance from './components/balance/Balance'
 import './Header.scss'
 import { useSvg } from '../../../hooks/useSvg';
+import { User } from '../../../types/userTypes';
 
 type HeaderProps = {
     setVisibleAside: (state: boolean) => void
@@ -17,7 +18,7 @@ const Header: FC<HeaderProps> = ({ setVisibleAside, setVisibleChat }) => {
     const auth = useStore($authStore)
     const { svg } = useSvg()
     const [toggleLittle, setToggleLittle] = useState(false)
-    const user: any = auth.user
+    const user: User = auth.user
 
     const toggleState = () => {
         setToggleLittle(!toggleLittle)

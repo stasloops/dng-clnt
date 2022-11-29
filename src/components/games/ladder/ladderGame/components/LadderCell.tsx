@@ -9,7 +9,7 @@ type Cell = {
 type LadderCellProps = {
     id: number
     item: Cell
-    activeСell: any[]
+    activeСell: number[]
     moveGame: (id: number, position: number) => void
 }
 
@@ -18,7 +18,7 @@ const LadderCell: FC<LadderCellProps> = ({ id, item, activeСell, moveGame }) =>
   
 
     const sortActiveСell = () => {
-        const equal: any = activeСell?.filter((item: number) => item === id)
+        const equal = activeСell?.filter((item: number) => item === id)
         setEqualCell(equal[0])
     }
 
