@@ -27,7 +27,7 @@ export const logout = createEffect(async () => {
         headers: {
             Authorization: `Bearer ${Cookies.get('refreshToken')}`
         }
-    }   
+    }
     await axios.get(`${API_URL}/logout`, config)
 })
 
@@ -47,7 +47,7 @@ const removeData = () => {
 }
 
 export const $authStore = createStore({
-    user: {},
+    user: JSON.parse(localStorage.getItem('user')) || {},
     isAuth: localStorage.getItem('token')
 })
     .on(registration.doneData, (state, res) => (
@@ -77,5 +77,6 @@ export const $authStore = createStore({
             user: setData(res.data)
         }
     ))
+   
 
 

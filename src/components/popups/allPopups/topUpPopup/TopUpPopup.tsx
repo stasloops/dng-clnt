@@ -17,13 +17,13 @@ const TopUpPopup = () => {
 
     const plusAmount = () => {
         if (amount < 5000) {
-            setAmount(amount + 10)
+            setAmount(prev => prev + 10)
         }
     }
 
     const minusAmount = () => {
         if (amount > 10) {
-            setAmount(amount - 10)
+            setAmount(prev => prev - 10)
         }
     }
 

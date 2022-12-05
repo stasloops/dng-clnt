@@ -8,7 +8,7 @@ type BalanceProps = {
     setVisibleAside: (state: boolean) => void
 }
 
-const Balance: FC<BalanceProps> = ({setVisibleAside}) => {
+const Balance: FC<BalanceProps> = ({ setVisibleAside }) => {
     const balance = useStore($balance)
     const filterBalance = Math.round(balance * 100) / 100
 

@@ -7,6 +7,7 @@ import { getError } from '../../../../effector/messageScreen/messageScreen'
 import { $slotStore, changeIsLoading, getSlotBet, getSlotRange } from '../../../../effector/slot/slot'
 import { toggleRegistration } from '../../../../effector/togglePopup/togglePopup'
 import './SlotDicePanel.scss'
+import { clearInterval } from 'timers'
 
 const SlotDicePanel = () => {
   const [bet, setBet] = useState<string>("1")
@@ -65,12 +66,16 @@ const SlotDicePanel = () => {
 
   useEffect(() => {
     localStorage.setItem('activeSlot', JSON.stringify(active))
-    if (active) {
+    
+    if (active) {      
       const createInterval = window.setInterval(() => {
         startGame()
         setCompletedGames(prev => prev + 1)
       }, 1000)
-      setInterval(createInterval)
+
+      return ()=> {
+        window.clearInterval(createInterval)        
+      }
     }
   }, [active])
 

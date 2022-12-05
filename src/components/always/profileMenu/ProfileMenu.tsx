@@ -10,7 +10,6 @@ import { User } from '../../../types/userTypes'
 import { useSvg } from '../../../hooks/useSvg'
 import './ProfileMenu.scss'
 
-
 type ProfileMenuProps = {
     visibleAside: boolean
     setVisibleAside: (state: boolean) => void
@@ -44,7 +43,7 @@ const ProfileMenu: FC<ProfileMenuProps> = ({ visibleAside, setVisibleAside }) =>
         setVisibleAside(false)
         toggleOut(true)
     }
-
+    
     return (
         <aside style={{ right: visibleAside ? '0px' : '-450px' }} className='aside' ref={value}>
             <div className='aside__container'>

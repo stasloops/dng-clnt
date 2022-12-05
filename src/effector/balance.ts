@@ -6,7 +6,8 @@ export const clientBet = createEvent<number>()
 export const clientReward = createEvent<number>()
 export const updateBalance = createEvent<number>()
 
-export const $balance = createStore<number>(999999)
+const user = JSON.parse(localStorage.getItem('user')) || 0
+export const $balance = createStore<number>(user.balance || 0)
 
 sample({
     clock: updateBalance,

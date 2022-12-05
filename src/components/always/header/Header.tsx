@@ -8,6 +8,7 @@ import Balance from './components/balance/Balance'
 import './Header.scss'
 import { useSvg } from '../../../hooks/useSvg';
 import { User } from '../../../types/userTypes';
+import axios from 'axios';
 
 type HeaderProps = {
     setVisibleAside: (state: boolean) => void
@@ -16,19 +17,18 @@ type HeaderProps = {
 
 const Header: FC<HeaderProps> = ({ setVisibleAside, setVisibleChat }) => {
     const auth = useStore($authStore)
+    const user: User = auth.user
     const { svg } = useSvg()
     const [toggleLittle, setToggleLittle] = useState(false)
-    const user: User = auth.user
 
-    const toggleState = () => {
-        setToggleLittle(!toggleLittle)
-    }
+    const toggleState = () => setToggleLittle(!toggleLittle)
 
     const openChat = () => {
         setTimeout(() => {
             setVisibleChat(true)
         })
     }
+
 
     return (
         <header className='header'>
@@ -65,14 +65,14 @@ const Header: FC<HeaderProps> = ({ setVisibleAside, setVisibleChat }) => {
                     </Link>
                     {
                         user.status === 'admin' ?
-                        <div onClick={openChat} className='header__item'>
-                            <span className='header__item-icon'>
-                                {svg.contact}
-                            </span>
-                            <span className='header__item-title'>Чат</span>
-                        </div>
-                        :
-                        null
+                            <div onClick={openChat} className='header__item'>
+                                <span className='header__item-icon'>
+                                    {svg.contact}
+                                </span>
+                                <span className='header__item-title'>Чат</span>
+                            </div>
+                            :
+                            null
                     }
                 </nav>
                 {

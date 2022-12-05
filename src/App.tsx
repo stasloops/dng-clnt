@@ -69,8 +69,7 @@ function App() {
       <Popups />
       <MessagePanel />
       <ProfileMenu visibleAside={visibleAside} setVisibleAside={setVisibleAside} />
-      <Chat visibleChat={visibleChat} setVisibleChat={setVisibleChat} />
-      {/* <ChatA visibleChat={visibleChat} setVisibleChat={setVisibleChat} /> */}
+      {/* <Chat visibleChat={visibleChat} setVisibleChat={setVisibleChat} /> */}
       <Routes>
         <Route index element={<Home />} />
         <Route path='/profile' element={<Profile />} />
