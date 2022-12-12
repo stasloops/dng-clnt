@@ -8,7 +8,8 @@ export const registration = createEffect(async ({ email = '', password = '' }) =
     return res
 })
 export const login = createEffect(async ({ email = '', password = '' }) => {
-    const res = await $api.post(`/login`, { password, email })
+    axios.defaults.withCredentials = true
+    const res = await axios.post(`${API_URL}/login`, { password, email })
     return res
 
 })
